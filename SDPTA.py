@@ -10,6 +10,8 @@ p = 1
 k = 1
 
 print(W)
-while True:
-    while p <= p:
-        o = np.sign(W * y)
+
+# while True:
+#     while p <= p:
+#         o = np.sign(W * y).
+
