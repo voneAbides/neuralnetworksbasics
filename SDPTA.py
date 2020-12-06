@@ -1,18 +1,38 @@
 from random import randint, uniform
 import numpy as np
+import matplotlib.pyplot as plt
 
-from pip._vendor.msgpack.fallback import xrange
 
 P = 35000
-c = 0.1
-W = np.array([0.1 * (uniform(-1, 2)) for _ in xrange(3)]).T  # 3 random numbers in range (-1,2) - initial weights
-E = 0
-p = 1
-k = 1
-y = np.array([1, 1, 1])
-print(W)
+x1 = np.random.rand(1, 5)
+d1 = np.random.rand(1, 5)
 
-while True:
-    while p <= p:
-        o = np.sign(np.dot(W, y))
+x2 = np.random.rand(1, 5)
+d2 = np.random.rand(1, 5)
+
+D = [[x1, d1], [x2, d2]]  #Dataset indexted in p
+print(D)
+
+def SDPTA(D):
+    P = len(D)
+    dim = len(D[0][0])  #x1 is same len as x2
+
+    c = 0.1
+    w = np.array(0.1 * (np.random.rand(dim, 1))).T  # 3 random numbers in range (-1,2) - initial weights [0.1 * (uniform(-1, 2)) for _ in xrange(3)]
+    e = 0
+    p = 0
+    k = 1
+
+    while True:
+        while p <= P:
+            x, d = D[p]
+            o = np.sign(np.dot(w, x))
+            w = w + np.dot(0.5 * c * (d - o), x)
+            e = 0.5 * (d - o)**2 + e
+            p += 1
+
+            x1 = [0, 1]
+
+            if e == 0:
+
 
