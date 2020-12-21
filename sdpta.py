@@ -16,9 +16,9 @@ x4 = np.random.rand(1)
 y4 = np.random.rand(1)
 
 y = np.array([[x1, y1, 1],
-            [x2, y2, 1],
-            [x3, y3, 1],
-            [x4, y4, 1]])   #Dataset indexted in p
+              [x2, y2, 1],
+              [x3, y3, 1],
+              [x4, y4, 1]])   #Dataset indexted in p
 
 
 # d = [0, 1, 1, 0]
@@ -26,7 +26,7 @@ d = np.squeeze(0.1 * (-1 + 2 * np.random.rand(4)))
 print(y)
 
 
-def sdpta(y):
+def sdpta(y, d):
     P = len(y)
     dim = len(y[0][0])  #x1 is same len as x2
 
@@ -44,7 +44,7 @@ def sdpta(y):
             o = np.sign(np.dot(w.T, y[p, :]))
             w = w + 0.5 * c * (d[p] - o) * y[p, :]
             e = 0.5 * (d[p] - o)**2 + e
-            p += 1
+            p = p + 1
 
             x0 = [0, 1]
 
@@ -65,4 +65,4 @@ def sdpta(y):
 
 
 
-sdpta(y)
+sdpta(y, d)

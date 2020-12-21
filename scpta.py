@@ -6,11 +6,11 @@ num = 0
 y = []
 d = []
 
-def scpta(y):
+def scpta(y, d):
 
     n = 0.1
     l = 1
-    w = 0.1 * (-1 + 2 * np.random.rand(3, 1))
+    w = np.squeeze(0.1 * (-1 + 2 * np.random.rand(3)))
     emax = 0.1
     e = 0
     p = 0
@@ -39,3 +39,5 @@ def scpta(y):
 
         k = k + 1
 
+
+scpta(y, d)
